@@ -11,7 +11,14 @@
       "Bash(npm install *)",
       "Bash(npm run *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
-      "Bash(npx playwright *)"
+      "Bash(npx playwright *)",
+      "Bash(sips *)",
+      "Bash(python3 -c \"from PIL import Image; print\\('PIL ok'\\)\")",
+      "Bash(node /tmp/crop.mjs)",
+      "Bash(node /tmp/crop2.mjs)",
+      "Bash(python3 -c \"import PIL; print\\('PIL', PIL.__version__\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"import PIL; print\\('PIL ok', PIL.__version__\\)\")"
     ]
   }
 }

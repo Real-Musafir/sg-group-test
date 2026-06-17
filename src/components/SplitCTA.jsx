@@ -1,83 +1,52 @@
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
-
-function WorkMockup() {
-  const jobs = ['Remote Developer', 'UI/UX Designer', 'Content Writer']
-
-  return (
-    <div className="w-full max-w-xs mx-auto">
-      {/* Search */}
-      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mb-4">
-        <p className="text-white/70 text-xs font-medium mb-2">Find Your Next Role</p>
-        <div className="flex gap-2">
-          <div className="flex-1 bg-white/20 rounded-xl px-3 py-2.5 text-xs text-white/60">
-            Job title...
-          </div>
-          <button className="bg-sky-400 hover:bg-sky-500 transition-colors rounded-xl px-4 py-2.5 text-xs text-white font-semibold">
-            Go
-          </button>
-        </div>
-      </div>
-
-      {/* Job listings */}
-      <div className="space-y-2.5">
-        {jobs.map((job) => (
-          <div
-            key={job}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-3 flex items-center justify-between hover:bg-white/15 transition-colors"
-          >
-            <div>
-              <p className="text-white text-sm font-medium">{job}</p>
-              <p className="text-white/50 text-xs">Worldwide • Remote</p>
-            </div>
-            <button className="text-xs bg-white/20 hover:bg-white/30 transition-colors text-white px-3 py-1.5 rounded-full font-medium">
-              Apply
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 export default function SplitCTA() {
-  const { ref, isVisible } = useScrollAnimation()
-
   return (
     <section
-      ref={ref}
-      className={`transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      aria-label="Call to action"
+      aria-label="Get started"
+      className="relative overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(90% 120% at 15% 20%, #eef1fe 0%, #e6ecfd 45%, #dde4fb 100%)',
+      }}
     >
-      <div className="grid md:grid-cols-2">
-        {/* Dark left */}
-        <div className="bg-navy py-20 px-8 flex items-center justify-center">
-          <div className="text-center w-full">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-8">
-              Let's Find Work
-            </h2>
-            <WorkMockup />
-          </div>
+      {/* soft decorative blob, right */}
+      <div
+        className="absolute top-1/2 right-[-8%] -translate-y-1/2 w-[520px] h-[520px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%)' }}
+        aria-hidden="true"
+      />
+
+      <div className="grid md:grid-cols-2 items-center gap-8 md:gap-0">
+        {/* Dashboard mockup — flush to the left edge */}
+        <div className="relative">
+          <img
+            src="/assets/mockup-dashboard.png"
+            alt="RemoteRecruit job search dashboard with filters"
+            className="w-full select-none"
+            loading="lazy"
+          />
         </div>
 
-        {/* White right */}
-        <div className="bg-white py-20 px-8 flex items-center justify-center">
-          <div className="max-w-xs">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-5">
-              Help is only a few clicks away!
-            </h2>
-            <p className="text-gray-500 leading-relaxed mb-8">
-              Get started and find great global opportunities. Connect with amazing
-              talent from around the world — all for free.
-            </p>
-            <a
-              href="#pricing"
-              className="inline-block bg-sky-500 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-sky-600 transition-all hover:shadow-lg hover:shadow-sky-100 hover:-translate-y-0.5 active:scale-95"
-            >
-              Get Started
-            </a>
-          </div>
+        {/* Text + CTA */}
+        <div className="relative px-6 lg:px-12 pb-16 md:py-24 max-w-xl">
+          <p className="text-royal font-semibold text-sm mb-3">Are you ready?</p>
+          <h2 className="text-ink font-bold text-4xl sm:text-5xl leading-[1.1] mb-5">
+            Help is only a few clicks away!
+          </h2>
+          <p className="text-body text-lg leading-relaxed mb-9 max-w-sm">
+            Click Below to get set up super quickly and find help now!
+          </p>
+
+          <a
+            href="#pricing"
+            className="inline-flex items-center gap-3 bg-[#d3e2f8] hover:bg-[#c7d9f4] transition-colors rounded-full pl-2 pr-7 py-2 group"
+          >
+            <span className="flex items-center justify-center w-10 h-10 rounded-full bg-brand text-white shadow-md transition-transform group-hover:translate-x-0.5">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4 h-4">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+            <span className="text-royal font-semibold">Get Started</span>
+          </a>
         </div>
       </div>
     </section>

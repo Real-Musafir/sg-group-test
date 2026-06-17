@@ -1,109 +1,109 @@
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
-
-const FREE_FEATURES = [
-  'Unlimited Job Postings',
-  'Instant Job Approval',
-  'Access to Global Candidates',
-  'Basic Profile Creation',
-  'Community Support',
-]
-
-const PREMIUM_FEATURES = [
-  'Everything in Free',
-  'Priority Job Listings',
-  'Featured Employer Badge',
-  'Advanced Analytics',
-  'Video Profile Showcase',
-  'Priority 24/7 Support',
-]
-
-function PlanCard({ name, price, features, highlight = false, badge = false }) {
+function CheckIcon() {
   return (
-    <div
-      className={`relative rounded-2xl p-7 flex flex-col transition-transform hover:-translate-y-1 duration-300 ${
-        highlight
-          ? 'bg-sky-500 shadow-2xl shadow-sky-500/40 scale-[1.03]'
-          : 'bg-white/10 backdrop-blur-sm border border-white/20'
-      }`}
-    >
-      {badge && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <img src="/assets/premium-tag.png" alt="Premium" className="h-8" loading="lazy" />
-        </div>
-      )}
+    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-brand-dark flex items-center justify-center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" className="w-3 h-3">
+        <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
+  )
+}
 
-      <div className={badge ? 'mt-3' : ''}>
-        <p
-          className={`text-xs font-bold uppercase tracking-widest mb-2 ${
-            highlight ? 'text-sky-100' : 'text-white/60'
-          }`}
-        >
-          {name}
-        </p>
-        <div className="flex items-baseline gap-1 mb-6">
-          <span className={`text-4xl font-extrabold ${highlight ? 'text-white' : 'text-white'}`}>
-            {price}
-          </span>
-          {price !== 'Free' && (
-            <span className={`text-sm ${highlight ? 'text-sky-100' : 'text-white/50'}`}>/month</span>
-          )}
-        </div>
-      </div>
+function CrossIcon() {
+  return (
+    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-300 flex items-center justify-center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" className="w-3 h-3">
+        <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </span>
+  )
+}
 
-      <ul className="space-y-3 flex-1 mb-8" role="list">
-        {features.map((f) => (
-          <li key={f} className="flex items-center gap-2.5 text-sm">
-            <span
-              className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
-                highlight ? 'bg-white text-sky-500' : 'bg-white/20 text-white'
-              }`}
-              aria-hidden="true"
-            >
-              ✓
-            </span>
-            <span className={highlight ? 'text-white' : 'text-white/75'}>{f}</span>
-          </li>
-        ))}
-      </ul>
+function Feature({ ok, children }) {
+  return (
+    <li className="flex items-center gap-3 text-[15px]">
+      {ok ? <CheckIcon /> : <CrossIcon />}
+      <span className={ok ? 'text-ink' : 'text-gray-400'}>{children}</span>
+    </li>
+  )
+}
 
-      <button
-        className={`w-full py-3.5 rounded-full font-semibold text-sm transition-all active:scale-95 ${
-          highlight
-            ? 'bg-white text-sky-600 hover:bg-sky-50 hover:shadow-lg'
-            : 'border border-white/40 text-white hover:bg-white/10'
-        }`}
-      >
-        Get Started
-      </button>
+const FREE = [
+  { ok: true, label: '1 Active Job' },
+  { ok: true, label: 'Basic List Placement' },
+  { ok: false, label: 'Unlimited Job Applicants' },
+  { ok: false, label: 'Invite Anyone to Apply to Your Jobs' },
+]
+
+const PREMIUM = [
+  { ok: true, label: 'Unlimited Job Posts' },
+  { ok: true, label: 'Instant Job Post Approval' },
+  { ok: true, label: 'Premium List Placement' },
+  { ok: true, label: 'Unlimited Job Applicants' },
+]
+
+function Card({ children, button }) {
+  return (
+    <div className="bg-white rounded-[28px] shadow-[0_30px_60px_-20px_rgba(30,62,133,0.25)] p-7 flex flex-col">
+      <div className="flex gap-6 mb-7">{children}</div>
+      {button}
     </div>
   )
 }
 
 export default function Pricing() {
-  const { ref, isVisible } = useScrollAnimation()
-
   return (
-    <section id="pricing" className="bg-navy py-20 lg:py-28" aria-labelledby="pricing-heading">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          ref={ref}
-          className={`transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="text-center mb-14">
-            <h2 id="pricing-heading" className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
-              Help Is One Click Away
-            </h2>
-            <p className="text-white/50 max-w-md mx-auto">
-              Choose the plan that works for you. Start free and upgrade any time.
-            </p>
-          </div>
+    <section id="pricing" className="relative z-10 bg-white pt-16 lg:pt-24">
+      <div className="max-w-content mx-auto px-6 lg:px-8">
+        <h2 className="text-center text-ink font-bold text-3xl sm:text-4xl mb-14">
+          Help Is One Click Away
+        </h2>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start max-w-2xl mx-auto">
-            <PlanCard name="Free" price="Free" features={FREE_FEATURES} />
-            <PlanCard name="Premium" price="$79.99" features={PREMIUM_FEATURES} highlight badge />
-          </div>
+        <div className="relative z-20 -mb-36 grid md:grid-cols-2 gap-7 lg:gap-10">
+          {/* Free */}
+          <Card
+            button={
+              <button className="w-full py-4 rounded-2xl border border-brand/50 text-royal font-semibold hover:bg-pill/30 transition-colors">
+                Get Started
+              </button>
+            }
+          >
+            <div className="bg-lav rounded-2xl flex flex-col items-center justify-center px-7 py-8 min-w-[150px]">
+              <span className="text-brand font-bold text-3xl leading-none">Free</span>
+              <span className="text-body mt-1">Basic</span>
+            </div>
+            <ul className="flex flex-col justify-center gap-4 flex-1">
+              {FREE.map((f) => (
+                <Feature key={f.label} ok={f.ok}>
+                  {f.label}
+                </Feature>
+              ))}
+            </ul>
+          </Card>
+
+          {/* Premium */}
+          <Card
+            button={
+              <button
+                className="w-full py-4 rounded-2xl text-white font-semibold transition-all hover:brightness-105 active:scale-[0.99]"
+                style={{ background: 'linear-gradient(90deg, #336cae 0%, #234a92 100%)' }}
+              >
+                Get Started
+              </button>
+            }
+          >
+            <div className="bg-lav rounded-2xl flex flex-col items-center justify-center px-7 py-6 min-w-[160px]">
+              <img src="/assets/premium-tag.png" alt="Premium" className="h-8 mb-3" />
+              <span className="text-brand font-bold text-3xl leading-none">$79.99</span>
+              <span className="text-body mt-1">Per Month</span>
+            </div>
+            <ul className="flex flex-col justify-center gap-4 flex-1">
+              {PREMIUM.map((f) => (
+                <Feature key={f.label} ok={f.ok}>
+                  {f.label}
+                </Feature>
+              ))}
+            </ul>
+          </Card>
         </div>
       </div>
     </section>

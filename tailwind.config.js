@@ -4,32 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: '#071828',
-        'navy-light': '#0c2340',
+        ink: '#11142d',        // headings / dark navy text
+        body: '#6b6e7e',       // paragraph gray
+        royal: '#1e3e85',      // eyebrows, pill text, links
+        brand: '#4ba6d6',      // bright cyan accent
+        'brand-dark': '#285499',
+        pill: '#c2eeff',       // light cyan pill background
+        lav: '#ecf2ff',        // light lavender panels
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
+      },
+      maxWidth: {
+        content: '1140px',
       },
       keyframes: {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(24px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        fadeInRight: {
-          '0%': { opacity: '0', transform: 'translateX(24px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
-        fadeInLeft: {
-          '0%': { opacity: '0', transform: 'translateX(-24px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.7s ease-out forwards',
-        'fade-in-up-d1': 'fadeInUp 0.7s ease-out 0.15s forwards',
-        'fade-in-up-d2': 'fadeInUp 0.7s ease-out 0.3s forwards',
-        'fade-in-right': 'fadeInRight 0.7s ease-out 0.2s forwards',
-        'fade-in-left': 'fadeInLeft 0.7s ease-out 0.2s forwards',
       },
     },
   },

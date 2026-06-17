@@ -7,12 +7,6 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-sans text-gray-900 antialiased;
-  }
-}
-
-@layer utilities {
-  .opacity-0-start {
-    opacity: 0;
+    @apply font-sans text-ink antialiased;
   }
 }
