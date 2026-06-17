@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Figma__get_metadata",
+      "mcp__claude_ai_Figma__get_screenshot",
+      "Bash(mkdir -p /Users/shahadath/projects/tech-exam/public/assets /Users/shahadath/projects/tech-exam/src/components /Users/shahadath/projects/tech-exam/src/hooks)",
+      "Bash(cp \"/Users/shahadath/projects/tech-exam/assets/RemoteRecruit Logo.png\" /Users/shahadath/projects/tech-exam/public/assets/logo.png)",
+      "Bash(cp \"/Users/shahadath/projects/tech-exam/assets/small-logo.png\" /Users/shahadath/projects/tech-exam/public/assets/small-logo.png)",
+      "Bash(cp \"/Users/shahadath/projects/tech-exam/assets/Premium Tag.png\" /Users/shahadath/projects/tech-exam/public/assets/premium-tag.png)",
+      "Bash(cp \"/Users/shahadath/projects/tech-exam/assets/profile-image.png\" /Users/shahadath/projects/tech-exam/public/assets/profile-image.png)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "Bash(npx playwright *)"
+    ]
+  }
+}
